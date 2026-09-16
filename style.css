@@ -549,15 +549,3 @@ h1{
    애니메이션 최소화 설정
 ========================= */
 
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *::before,
-  *::after{
-    animation-duration:.01ms !important;
-    animation-delay:0ms !important;
-    transition-duration:.01ms !important;
-    scroll-behavior:auto !important;
-  }
-
-}
