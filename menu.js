@@ -63,9 +63,7 @@ function applyLanguage(lang, btn) {
 
   const t = texts[lang];
 
-  if (!t) {
-    return;
-  }
+  if (!t) return;
 
 
   /* 언어 버튼 */
@@ -81,78 +79,43 @@ function applyLanguage(lang, btn) {
   }
 
 
-  /* 상단 */
+  /* 상단 / 섹션 제목 */
 
-  const title = document.getElementById("title");
+  const values = {
 
-  if (title) {
-    title.textContent = t.title;
-  }
+    title: t.title,
 
+    info: t.info,
 
-  const info = document.getElementById("info");
+    meatTitle: t.meat,
 
-  if (info) {
-    info.textContent = t.info;
-  }
+    meatNote: t.note,
 
+    beefTitle: t.beef,
 
-  /* 메뉴 제목 */
+    sideTitle: t.side,
 
-  const meatTitle =
-    document.getElementById("meatTitle");
+    setTitle: t.set,
 
-  if (meatTitle) {
-    meatTitle.textContent = t.meat;
-  }
+    drinkTitle: t.drink,
 
+    footerNote: t.footer
 
-  const meatNote =
-    document.getElementById("meatNote");
-
-  if (meatNote) {
-    meatNote.textContent = t.note;
-  }
+  };
 
 
-  const beefTitle =
-    document.getElementById("beefTitle");
+  Object.entries(values).forEach(
+    ([id, value]) => {
 
-  if (beefTitle) {
-    beefTitle.textContent = t.beef;
-  }
+      const element =
+        document.getElementById(id);
 
+      if (element) {
+        element.textContent = value;
+      }
 
-  const sideTitle =
-    document.getElementById("sideTitle");
-
-  if (sideTitle) {
-    sideTitle.textContent = t.side;
-  }
-
-
-  const setTitle =
-    document.getElementById("setTitle");
-
-  if (setTitle) {
-    setTitle.textContent = t.set;
-  }
-
-
-  const drinkTitle =
-    document.getElementById("drinkTitle");
-
-  if (drinkTitle) {
-    drinkTitle.textContent = t.drink;
-  }
-
-
-  const footerNote =
-    document.getElementById("footerNote");
-
-  if (footerNote) {
-    footerNote.textContent = t.footer;
-  }
+    }
+  );
 
 
   /* =========================
@@ -167,12 +130,17 @@ function applyLanguage(lang, btn) {
         element.dataset[lang];
 
       if (translatedText) {
-        element.textContent = translatedText;
+
+        element.textContent =
+          translatedText;
+
       }
 
       else {
+
         element.textContent =
           element.dataset.ko;
+
       }
 
     });
@@ -186,29 +154,21 @@ function applyLanguage(lang, btn) {
 
 
 /* =========================
-   언어 전환
+   언어 변경
 ========================= */
 
 function setLang(lang, btn) {
 
-  if (changingLanguage) {
-    return;
-  }
+  if (changingLanguage) return;
 
-  if (!texts[lang]) {
-    return;
-  }
+  if (!texts[lang]) return;
 
-  if (lang === currentLang) {
-    return;
-  }
+  if (lang === currentLang) return;
 
 
   const wrap =
     document.querySelector(".wrap");
 
-
-  /* wrap이 없는 경우 */
 
   if (!wrap) {
 
@@ -223,89 +183,133 @@ function setLang(lang, btn) {
 
 
   /*
-    1단계
-
-    language-changing 클래스를 추가한다.
-
-    CSS:
-
-    opacity: 0
-    transform: translateY(8px)
-
-    transition: 0.32초
+    기존 애니메이션 클래스 초기화
   */
 
-  wrap.classList.add(
-    "language-changing"
-  );
+  wrap.classList.remove("lang-in");
+
+  wrap.classList.remove("lang-out");
 
 
   /*
-    2단계
-
-    CSS의 0.32초 전환이 끝날 시간을
-    충분히 기다린다.
-
-    380ms 후 실제 번역 변경.
+    브라우저가 초기 상태를
+    확실하게 계산하도록 강제
   */
 
-  setTimeout(() => {
+  void wrap.offsetWidth;
+
+
+  /*
+    1단계
+    현재 화면 OUT
+  */
+
+  wrap.classList.add("lang-out");
+
+
+  /*
+    languageOut 애니메이션이
+    실제로 끝나는 순간을 기다림
+  */
+
+  const handleOutEnd = (event) => {
+
+    if (event.target !== wrap) return;
+
+    if (
+      event.animationName !==
+      "languageOut"
+    ) {
+      return;
+    }
+
+
+    wrap.removeEventListener(
+      "animationend",
+      handleOutEnd
+    );
+
+
+    /*
+      2단계
+      완전히 사라진 뒤 번역
+    */
 
     applyLanguage(lang, btn);
 
 
     /*
-      3단계
-
-      번역된 상태를 브라우저가
-      먼저 그리도록 두 프레임 기다린다.
+      OUT 제거
     */
 
-    requestAnimationFrame(() => {
-
-      requestAnimationFrame(() => {
+    wrap.classList.remove("lang-out");
 
 
-        /*
-          language-changing 제거
+    /*
+      새 애니메이션을
+      처음부터 재생하기 위해
+      reflow 강제
+    */
 
-          opacity 0 → 1
-          translateY(8px) → 0
-
-          부드럽게 다시 등장
-        */
-
-        wrap.classList.remove(
-          "language-changing"
-        );
+    void wrap.offsetWidth;
 
 
-        /*
-          4단계
+    /*
+      3단계
+      번역된 화면 IN
+    */
 
-          다시 나타나는 0.32초가
-          끝난 후 잠금 해제
-        */
-
-        setTimeout(() => {
-
-          changingLanguage = false;
-
-        }, 380);
+    wrap.classList.add("lang-in");
 
 
-      });
+    const handleInEnd = (event) => {
 
-    });
+      if (event.target !== wrap) return;
+
+      if (
+        event.animationName !==
+        "languageIn"
+      ) {
+        return;
+      }
 
 
-  }, 380);
+      wrap.removeEventListener(
+        "animationend",
+        handleInEnd
+      );
+
+
+      /*
+        애니메이션 완료 후
+        클래스 정리
+      */
+
+      wrap.classList.remove("lang-in");
+
+      changingLanguage = false;
+
+    };
+
+
+    wrap.addEventListener(
+      "animationend",
+      handleInEnd
+    );
+
+  };
+
+
+  wrap.addEventListener(
+    "animationend",
+    handleOutEnd
+  );
 
 }
 
 
 /* =========================
-   페이지 최초 실행
+   최초 페이지 실행
 ========================= */
 
 document.addEventListener(
@@ -317,18 +321,15 @@ document.addEventListener(
     changingLanguage = false;
 
 
+    /* 한국어 버튼 활성화 */
+
     const buttons =
       document.querySelectorAll(
         ".lang button"
       );
 
-
     buttons.forEach(button => {
-
-      button.classList.remove(
-        "active"
-      );
-
+      button.classList.remove("active");
     });
 
 
@@ -337,14 +338,24 @@ document.addEventListener(
         ".lang button"
       );
 
-
     if (koreanButton) {
+      koreanButton.classList.add("active");
+    }
 
-      koreanButton.classList.add(
-        "active"
+
+    /*
+      첫 페이지 등장 애니메이션
+
+      DOM이 그려진 다음 실행
+    */
+
+    requestAnimationFrame(() => {
+
+      document.body.classList.add(
+        "page-loaded"
       );
 
-    }
+    });
 
   }
 );
