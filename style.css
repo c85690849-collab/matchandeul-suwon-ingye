@@ -17,50 +17,60 @@ body{
 
 
 /* =========================
-   전체 페이지
+   전체
 ========================= */
 
 .wrap{
   max-width:720px;
   margin:auto;
   padding:18px 22px 48px;
-
-  /*
-    첫 등장 애니메이션
-    forwards / both 사용하지 않음
-    종료 후 opacity를 붙잡지 않게 함
-  */
-
-  animation-name:pageEnter;
-  animation-duration:.8s;
-  animation-timing-function:cubic-bezier(.22,1,.36,1);
-  animation-fill-mode:none;
-
-  /*
-    언어 변경용 transition
-  */
-
-  transition:
-    opacity .32s ease,
-    transform .32s cubic-bezier(.22,1,.36,1);
-
-  opacity:1;
-  transform:translateY(0);
 }
 
 
 /* =========================
-   언어 변경
+   최초 페이지 등장
 ========================= */
 
-.wrap.language-changing{
-  opacity:0;
-  transform:translateY(8px);
+body.page-loaded .wrap{
+  animation:
+    pageEnter .75s
+    cubic-bezier(.22,1,.36,1)
+    both;
 }
 
 
 /* =========================
-   언어 선택
+   언어 전환 전용
+========================= */
+
+/*
+  언어 변경 직전
+  현재 화면이 사라짐
+*/
+
+.wrap.lang-out{
+  animation:
+    languageOut .30s
+    cubic-bezier(.4,0,1,1)
+    forwards !important;
+}
+
+
+/*
+  번역 완료 후
+  새 화면이 등장
+*/
+
+.wrap.lang-in{
+  animation:
+    languageIn .45s
+    cubic-bezier(.22,1,.36,1)
+    both !important;
+}
+
+
+/* =========================
+   언어 버튼
 ========================= */
 
 .lang{
@@ -69,13 +79,13 @@ body{
   gap:4px;
   margin:2px 0 28px;
   font-size:12px;
-
-  animation:fadeDown .7s .1s both;
 }
 
 .lang button{
   position:relative;
+
   border:0;
+
   background:transparent;
 
   padding:7px 11px;
@@ -83,12 +93,12 @@ body{
   cursor:pointer;
 
   color:#777;
+
   font-size:12px;
 
   transition:
-    color .3s ease,
-    transform .3s ease,
-    opacity .3s ease;
+    color .25s ease,
+    transform .2s ease;
 }
 
 .lang button::after{
@@ -107,12 +117,12 @@ body{
   transform:translateX(-50%);
 
   transition:
-    width .35s cubic-bezier(.22,1,.36,1);
+    width .3s cubic-bezier(.22,1,.36,1);
 }
 
 .lang button.active{
-  font-weight:700;
   color:#fff;
+  font-weight:700;
 }
 
 .lang button.active::after{
@@ -134,10 +144,6 @@ body{
   padding:8px 10px 30px;
 
   border-bottom:1px solid #444;
-
-  animation:
-    heroEnter .9s .15s
-    cubic-bezier(.22,1,.36,1) both;
 }
 
 .brand{
@@ -148,8 +154,6 @@ body{
   font-weight:700;
 
   color:#aaa;
-
-  animation:fadeDown .8s .2s both;
 }
 
 h1{
@@ -160,10 +164,6 @@ h1{
   font-weight:700;
 
   letter-spacing:-.5px;
-
-  animation:
-    titleEnter .9s .28s
-    cubic-bezier(.22,1,.36,1) both;
 }
 
 .sub{
@@ -172,13 +172,11 @@ h1{
   letter-spacing:3px;
 
   color:#777;
-
-  animation:fadeUp .8s .4s both;
 }
 
 
 /* =========================
-   매장 안내
+   안내
 ========================= */
 
 .info{
@@ -195,51 +193,16 @@ h1{
   font-size:12px;
 
   border:1px solid #222;
-
-  animation:fadeUp .8s .45s both;
 }
 
 
 /* =========================
-   메뉴 SECTION
+   SECTION
 ========================= */
 
 .section{
   margin-top:28px;
-
-  opacity:0;
-
-  transform:translateY(24px);
-
-  animation:
-    sectionEnter .75s
-    cubic-bezier(.22,1,.36,1)
-    forwards;
 }
-
-
-/* 섹션 순차 등장 */
-
-.section:nth-of-type(1){
-  animation-delay:.30s;
-}
-
-.section:nth-of-type(2){
-  animation-delay:.40s;
-}
-
-.section:nth-of-type(3){
-  animation-delay:.50s;
-}
-
-.section:nth-of-type(4){
-  animation-delay:.60s;
-}
-
-.section:nth-of-type(5){
-  animation-delay:.70s;
-}
-
 
 .section h2{
   font-size:18px;
@@ -281,69 +244,12 @@ h1{
 
   border-bottom:1px solid #333;
 
-  opacity:0;
-
-  transform:translateY(12px);
-
-  animation:
-    itemEnter .55s
-    cubic-bezier(.22,1,.36,1)
-    forwards;
-
   transition:
-    transform .25s ease,
-    background .25s ease,
-    padding-left .25s ease,
-    padding-right .25s ease;
+    transform .2s ease,
+    background .2s ease,
+    padding-left .2s ease,
+    padding-right .2s ease;
 }
-
-
-/* 메뉴 순차 등장 */
-
-.section .item:nth-of-type(1){
-  animation-delay:.45s;
-}
-
-.section .item:nth-of-type(2){
-  animation-delay:.50s;
-}
-
-.section .item:nth-of-type(3){
-  animation-delay:.55s;
-}
-
-.section .item:nth-of-type(4){
-  animation-delay:.60s;
-}
-
-.section .item:nth-of-type(5){
-  animation-delay:.65s;
-}
-
-.section .item:nth-of-type(6){
-  animation-delay:.70s;
-}
-
-.section .item:nth-of-type(7){
-  animation-delay:.75s;
-}
-
-.section .item:nth-of-type(8){
-  animation-delay:.80s;
-}
-
-.section .item:nth-of-type(9){
-  animation-delay:.85s;
-}
-
-.section .item:nth-of-type(10){
-  animation-delay:.90s;
-}
-
-
-/* =========================
-   메뉴 터치 효과
-========================= */
 
 .item:active{
   transform:scale(.985);
@@ -356,10 +262,6 @@ h1{
 }
 
 
-/* =========================
-   메뉴 이름
-========================= */
-
 .name{
   font-weight:600;
 
@@ -368,10 +270,6 @@ h1{
   line-height:1.45;
 }
 
-
-/* =========================
-   메뉴 설명
-========================= */
 
 .desc{
   font-size:11px;
@@ -384,24 +282,12 @@ h1{
 }
 
 
-/* =========================
-   가격
-========================= */
-
 .price{
   white-space:nowrap;
 
   font-weight:600;
 
   font-size:14px;
-
-  transition:
-    transform .25s ease,
-    opacity .25s ease;
-}
-
-.item:active .price{
-  transform:translateX(-3px);
 }
 
 
@@ -444,8 +330,6 @@ h1{
   border-top:1px solid #222;
 
   padding-top:18px;
-
-  animation:fadeUp .8s 1s both;
 }
 
 
@@ -455,17 +339,17 @@ h1{
 
 
 /* =========================
-   첫 페이지 등장
+   최초 등장
 ========================= */
 
 @keyframes pageEnter{
 
-  from{
+  0%{
     opacity:0;
-    transform:translateY(6px);
+    transform:translateY(14px);
   }
 
-  to{
+  100%{
     opacity:1;
     transform:translateY(0);
   }
@@ -474,116 +358,38 @@ h1{
 
 
 /* =========================
-   HERO 등장
+   언어 화면 OUT
 ========================= */
 
-@keyframes heroEnter{
+@keyframes languageOut{
 
-  from{
-    opacity:0;
-    transform:translateY(-14px);
+  0%{
+    opacity:1;
+    transform:translateY(0) scale(1);
   }
 
-  to{
-    opacity:1;
-    transform:translateY(0);
+  100%{
+    opacity:0;
+    transform:translateY(-8px) scale(.995);
   }
 
 }
 
 
 /* =========================
-   제목 등장
+   언어 화면 IN
 ========================= */
 
-@keyframes titleEnter{
+@keyframes languageIn{
 
-  from{
+  0%{
     opacity:0;
-    transform:translateY(15px);
-    letter-spacing:1px;
+    transform:translateY(12px) scale(.995);
   }
 
-  to{
+  100%{
     opacity:1;
-    transform:translateY(0);
-    letter-spacing:-.5px;
-  }
-
-}
-
-
-/* =========================
-   SECTION 등장
-========================= */
-
-@keyframes sectionEnter{
-
-  from{
-    opacity:0;
-    transform:translateY(24px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-
-
-/* =========================
-   메뉴 등장
-========================= */
-
-@keyframes itemEnter{
-
-  from{
-    opacity:0;
-    transform:translateY(12px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-
-
-/* =========================
-   아래 → 위
-========================= */
-
-@keyframes fadeUp{
-
-  from{
-    opacity:0;
-    transform:translateY(12px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-
-
-/* =========================
-   위 → 아래
-========================= */
-
-@keyframes fadeDown{
-
-  from{
-    opacity:0;
-    transform:translateY(-10px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
+    transform:translateY(0) scale(1);
   }
 
 }
