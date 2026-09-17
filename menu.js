@@ -1,4 +1,5 @@
 const texts = {
+
   ko: {
     title: "맛찬들왕소금구이 수원인계점",
     info: "수원 인계동 · 숙성 돼지고기 전문",
@@ -46,12 +47,147 @@ const texts = {
     drink: "酒水 & 饮料",
     footer: "菜单及价格可能根据门店运营情况有所调整。"
   }
+
 };
 
 
 let currentLang = "ko";
 let changingLanguage = false;
 
+
+/* =========================
+   실제 번역 적용
+========================= */
+
+function applyLanguage(lang, btn) {
+
+  const t = texts[lang];
+
+  if (!t) {
+    return;
+  }
+
+
+  /* 언어 버튼 */
+
+  document
+    .querySelectorAll(".lang button")
+    .forEach(button => {
+      button.classList.remove("active");
+    });
+
+  if (btn) {
+    btn.classList.add("active");
+  }
+
+
+  /* 상단 */
+
+  const title = document.getElementById("title");
+
+  if (title) {
+    title.textContent = t.title;
+  }
+
+
+  const info = document.getElementById("info");
+
+  if (info) {
+    info.textContent = t.info;
+  }
+
+
+  /* 메뉴 제목 */
+
+  const meatTitle =
+    document.getElementById("meatTitle");
+
+  if (meatTitle) {
+    meatTitle.textContent = t.meat;
+  }
+
+
+  const meatNote =
+    document.getElementById("meatNote");
+
+  if (meatNote) {
+    meatNote.textContent = t.note;
+  }
+
+
+  const beefTitle =
+    document.getElementById("beefTitle");
+
+  if (beefTitle) {
+    beefTitle.textContent = t.beef;
+  }
+
+
+  const sideTitle =
+    document.getElementById("sideTitle");
+
+  if (sideTitle) {
+    sideTitle.textContent = t.side;
+  }
+
+
+  const setTitle =
+    document.getElementById("setTitle");
+
+  if (setTitle) {
+    setTitle.textContent = t.set;
+  }
+
+
+  const drinkTitle =
+    document.getElementById("drinkTitle");
+
+  if (drinkTitle) {
+    drinkTitle.textContent = t.drink;
+  }
+
+
+  const footerNote =
+    document.getElementById("footerNote");
+
+  if (footerNote) {
+    footerNote.textContent = t.footer;
+  }
+
+
+  /* =========================
+     개별 메뉴 번역
+  ========================= */
+
+  document
+    .querySelectorAll("[data-ko]")
+    .forEach(element => {
+
+      const translatedText =
+        element.dataset[lang];
+
+      if (translatedText) {
+        element.textContent = translatedText;
+      }
+
+      else {
+        element.textContent =
+          element.dataset.ko;
+      }
+
+    });
+
+
+  document.documentElement.lang = lang;
+
+  currentLang = lang;
+
+}
+
+
+/* =========================
+   언어 전환
+========================= */
 
 function setLang(lang, btn) {
 
@@ -63,190 +199,152 @@ function setLang(lang, btn) {
     return;
   }
 
-  changingLanguage = true;
-
-  const wrap = document.querySelector(".wrap");
-
-  if (wrap) {
-    wrap.classList.add("language-changing");
+  if (lang === currentLang) {
+    return;
   }
 
+
+  const wrap =
+    document.querySelector(".wrap");
+
+
+  /* wrap이 없는 경우 */
+
+  if (!wrap) {
+
+    applyLanguage(lang, btn);
+
+    return;
+
+  }
+
+
+  changingLanguage = true;
+
+
+  /*
+    1단계
+
+    language-changing 클래스를 추가한다.
+
+    CSS:
+
+    opacity: 0
+    transform: translateY(8px)
+
+    transition: 0.32초
+  */
+
+  wrap.classList.add(
+    "language-changing"
+  );
+
+
+  /*
+    2단계
+
+    CSS의 0.32초 전환이 끝날 시간을
+    충분히 기다린다.
+
+    380ms 후 실제 번역 변경.
+  */
 
   setTimeout(() => {
 
-    /* 언어 버튼 활성화 변경 */
-
-    document
-      .querySelectorAll(".lang button")
-      .forEach(button => {
-        button.classList.remove("active");
-      });
-
-    if (btn) {
-      btn.classList.add("active");
-    }
-
-
-    /* 선택된 언어 데이터 */
-
-    const t = texts[lang];
-
-
-    /* 상단 제목 */
-
-    const title = document.getElementById("title");
-
-    if (title) {
-      title.textContent = t.title;
-    }
-
-
-    /* 매장 설명 */
-
-    const info = document.getElementById("info");
-
-    if (info) {
-      info.textContent = t.info;
-    }
-
-
-    /* 숙성 돼지고기 */
-
-    const meatTitle = document.getElementById("meatTitle");
-
-    if (meatTitle) {
-      meatTitle.textContent = t.meat;
-    }
-
-
-    /* 주문 안내 */
-
-    const meatNote = document.getElementById("meatNote");
-
-    if (meatNote) {
-      meatNote.textContent = t.note;
-    }
-
-
-    /* 한우 */
-
-    const beefTitle = document.getElementById("beefTitle");
-
-    if (beefTitle) {
-      beefTitle.textContent = t.beef;
-    }
-
-
-    /* 식사 & 사이드 */
-
-    const sideTitle = document.getElementById("sideTitle");
-
-    if (sideTitle) {
-      sideTitle.textContent = t.side;
-    }
-
-
-    /* 추천 세트 */
-
-    const setTitle = document.getElementById("setTitle");
-
-    if (setTitle) {
-      setTitle.textContent = t.set;
-    }
-
-
-    /* 주류 & 음료 */
-
-    const drinkTitle = document.getElementById("drinkTitle");
-
-    if (drinkTitle) {
-      drinkTitle.textContent = t.drink;
-    }
-
-
-    /* 하단 안내 */
-
-    const footerNote = document.getElementById("footerNote");
-
-    if (footerNote) {
-      footerNote.textContent = t.footer;
-    }
+    applyLanguage(lang, btn);
 
 
     /*
-      메뉴 개별 번역
+      3단계
 
-      index.html에 들어있는
-
-      data-ko
-      data-en
-      data-ja
-      data-zh
-
-      값을 자동으로 읽어서 변경
+      번역된 상태를 브라우저가
+      먼저 그리도록 두 프레임 기다린다.
     */
-
-    document
-      .querySelectorAll("[data-ko]")
-      .forEach(element => {
-
-        const translatedText = element.dataset[lang];
-
-        if (translatedText) {
-          element.textContent = translatedText;
-        } else {
-          element.textContent = element.dataset.ko;
-        }
-
-      });
-
-
-    /* HTML 언어 속성 변경 */
-
-    document.documentElement.lang = lang;
-
-    currentLang = lang;
-
-
-    /* 화면 다시 표시 */
 
     requestAnimationFrame(() => {
 
-      if (wrap) {
-        wrap.classList.remove("language-changing");
-      }
+      requestAnimationFrame(() => {
 
-      setTimeout(() => {
-        changingLanguage = false;
-      }, 250);
+
+        /*
+          language-changing 제거
+
+          opacity 0 → 1
+          translateY(8px) → 0
+
+          부드럽게 다시 등장
+        */
+
+        wrap.classList.remove(
+          "language-changing"
+        );
+
+
+        /*
+          4단계
+
+          다시 나타나는 0.32초가
+          끝난 후 잠금 해제
+        */
+
+        setTimeout(() => {
+
+          changingLanguage = false;
+
+        }, 380);
+
+
+      });
 
     });
 
-  }, 180);
+
+  }, 380);
+
 }
 
 
-/*
-  페이지 최초 실행
-*/
+/* =========================
+   페이지 최초 실행
+========================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
 
-  currentLang = "ko";
+    currentLang = "ko";
 
-  const buttons =
-    document.querySelectorAll(".lang button");
-
-  buttons.forEach(button => {
-    button.classList.remove("active");
-  });
+    changingLanguage = false;
 
 
-  const koreanButton =
-    document.querySelector(".lang button");
+    const buttons =
+      document.querySelectorAll(
+        ".lang button"
+      );
 
-  if (koreanButton) {
-    koreanButton.classList.add("active");
+
+    buttons.forEach(button => {
+
+      button.classList.remove(
+        "active"
+      );
+
+    });
+
+
+    const koreanButton =
+      document.querySelector(
+        ".lang button"
+      );
+
+
+    if (koreanButton) {
+
+      koreanButton.classList.add(
+        "active"
+      );
+
+    }
+
   }
-
-});
+);
