@@ -8,491 +8,532 @@
 <title>맛찬들 수원인계점 다국어 메뉴판</title>
 
 <style>
-*{box-sizing:border-box}
-
-html{background:#111}
-
-body{
-  margin:0;
-  background:#111;
-  color:#f5f5f5;
-  font-family:Arial,"Noto Sans KR","Noto Sans JP","Noto Sans SC",sans-serif;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-  overflow-x:hidden;
+* {
+  box-sizing: border-box;
 }
 
-button{font-family:inherit}
-
-.wrap{
-  width:100%;
-  max-width:720px;
-  margin:0 auto;
-  padding:18px 22px 48px;
-  opacity:0;
-  transform:translateY(16px);
+html {
+  background: #111;
 }
 
-body.ready .wrap{
-  opacity:1;
-  transform:translateY(0);
+body {
+  margin: 0;
+  background: #111;
+  color: #f5f5f5;
+  font-family: Arial, "Noto Sans KR", "Noto Sans JP", "Noto Sans SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 18px 22px 48px;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+body.ready .wrap {
+  opacity: 1;
+  transform: translateY(0);
   transition:
     opacity 700ms cubic-bezier(.22,1,.36,1),
     transform 700ms cubic-bezier(.22,1,.36,1);
 }
 
-body.language-out .wrap{
-  opacity:0;
-  transform:translateY(-8px);
-  transition:opacity 180ms ease,transform 180ms ease;
+body.language-out .wrap {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
 /* LANGUAGE */
 
-.lang{
-  display:flex;
-  justify-content:center;
-  margin:2px 0 28px;
+.lang {
+  display: flex;
+  justify-content: center;
+  margin: 2px 0 28px;
 }
 
-.lang button{
-  position:relative;
-  border:0;
-  background:transparent;
-  padding:7px 11px;
-  color:#777;
-  font-size:12px;
-  cursor:pointer;
+.lang button {
+  position: relative;
+  border: 0;
+  background: transparent;
+  padding: 7px 11px;
+  color: #777;
+  font-size: 12px;
+  cursor: pointer;
 }
 
-.lang button::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:0;
-  width:0;
-  height:1px;
-  background:#fff;
-  transform:translateX(-50%);
-  transition:width .3s;
+.lang button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: #fff;
+  transform: translateX(-50%);
+  transition: width .3s ease;
 }
 
-.lang button.active{
-  color:#fff;
-  font-weight:700;
+.lang button.active {
+  color: #fff;
+  font-weight: 700;
 }
 
-.lang button.active::after{width:55%}
+.lang button.active::after {
+  width: 55%;
+}
 
 /* HERO */
 
-.hero{
-  text-align:center;
-  padding:8px 10px 30px;
-  border-bottom:1px solid #444;
+.hero {
+  text-align: center;
+  padding: 8px 10px 30px;
+  border-bottom: 1px solid #444;
 }
 
-.brand{
-  color:#aaa;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:5px;
+.brand {
+  color: #aaa;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
 }
 
-h1{
-  margin:10px 0 6px;
-  font-size:27px;
-  line-height:1.3;
+h1 {
+  margin: 10px 0 6px;
+  font-size: 27px;
+  line-height: 1.3;
 }
 
-.sub{
-  color:#777;
-  font-size:10px;
-  letter-spacing:3px;
+.sub {
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 3px;
 }
 
-.info{
-  margin:18px 0 20px;
-  padding:12px;
-  background:#191919;
-  border:1px solid #222;
-  color:#aaa;
-  text-align:center;
-  font-size:12px;
+.info {
+  margin: 18px 0 20px;
+  padding: 12px;
+  background: #191919;
+  border: 1px solid #222;
+  color: #aaa;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
-/* K-SSAM */
+/* K-SSAM EXPERIENCE */
 
-.ssam-box{
-  margin-bottom:30px;
-  border:1px solid #343434;
-  background:#151515;
-  overflow:hidden;
+.ssam-box {
+  margin-bottom: 30px;
+  border: 1px solid #343434;
+  background: #151515;
+  overflow: hidden;
 }
 
-.ssam-button{
-  width:100%;
-  border:0;
-  background:transparent;
-  color:#fff;
-  padding:17px 16px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  text-align:left;
-  cursor:pointer;
+.ssam-button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  padding: 17px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
 }
 
-.ssam-title{
-  display:block;
-  font-size:14px;
-  font-weight:700;
+.ssam-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
 }
 
-.ssam-subtitle{
-  display:block;
-  margin-top:5px;
-  color:#999;
-  font-size:11px;
+.ssam-subtitle {
+  display: block;
+  margin-top: 5px;
+  color: #999;
+  font-size: 11px;
+  line-height: 1.5;
 }
 
-.ssam-arrow{
-  font-size:18px;
-  transition:transform .35s;
+.ssam-arrow {
+  margin-left: 12px;
+  font-size: 18px;
+  transition: transform .35s ease;
 }
 
-.ssam-box.open .ssam-arrow{
-  transform:rotate(180deg);
+.ssam-box.open .ssam-arrow {
+  transform: rotate(180deg);
 }
 
-.ssam-content{
-  max-height:0;
-  opacity:0;
-  overflow:hidden;
-  transition:max-height .6s ease,opacity .3s;
+.ssam-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height .6s cubic-bezier(.22,1,.36,1),
+    opacity .3s ease;
 }
 
-.ssam-box.open .ssam-content{
-  max-height:1500px;
-  opacity:1;
+.ssam-box.open .ssam-content {
+  max-height: 1800px;
+  opacity: 1;
 }
 
-.ssam-inner{
-  padding:0 16px 18px;
+.ssam-inner {
+  padding: 0 16px 18px;
 }
 
-.ssam-guide{
-  padding:14px 0;
-  border-top:1px solid #2d2d2d;
+.ssam-guide {
+  padding: 14px 0;
+  border-top: 1px solid #2d2d2d;
 }
 
-.ssam-guide-name{
-  font-size:13px;
-  font-weight:700;
+.ssam-guide-name {
+  font-size: 13px;
+  font-weight: 700;
 }
 
-.ssam-guide-steps{
-  margin-top:6px;
-  color:#aaa;
-  font-size:12px;
-  line-height:1.7;
+.ssam-guide-steps {
+  margin-top: 6px;
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.7;
 }
 
 /* MISSION */
 
-.mission-start{
-  width:100%;
-  margin-top:8px;
-  padding:14px;
-  border:1px solid #555;
-  background:#f2f2f2;
-  color:#111;
-  font-size:12px;
-  font-weight:700;
-  cursor:pointer;
+.mission-start {
+  width: 100%;
+  margin-top: 10px;
+  padding: 15px;
+  border: 0;
+  background: #f2f2f2;
+  color: #111;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
 }
 
-.mission-area{
-  display:none;
-  margin-top:16px;
+.mission-area {
+  display: none;
+  margin-top: 18px;
 }
 
-.mission-area.show{
-  display:block;
-  animation:missionIn .45s ease;
+.mission-area.show {
+  display: block;
+  animation: missionIn .45s ease;
 }
 
-@keyframes missionIn{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1;transform:translateY(0)}
+@keyframes missionIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.progress-text{
-  margin-bottom:10px;
-  text-align:center;
-  color:#aaa;
-  font-size:11px;
-  font-weight:700;
+.progress-text {
+  margin-bottom: 9px;
+  text-align: center;
+  color: #aaa;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
-.progress{
-  height:4px;
-  margin-bottom:15px;
-  background:#292929;
-  overflow:hidden;
+.progress {
+  height: 4px;
+  margin-bottom: 15px;
+  background: #292929;
+  overflow: hidden;
 }
 
-.progress-bar{
-  width:0;
-  height:100%;
-  background:#f2f2f2;
-  transition:width .4s ease;
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background: #f2f2f2;
+  transition: width .4s ease;
 }
 
-.mission{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-top:8px;
-  padding:13px;
-  border:1px solid #303030;
-  background:#1b1b1b;
+.mission {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 13px;
+  border: 1px solid #303030;
+  background: #1b1b1b;
+  transition: border-color .25s ease, background .25s ease;
 }
 
-.mission-text{
-  font-size:12px;
-  line-height:1.5;
+.mission-text {
+  font-size: 12px;
+  line-height: 1.55;
 }
 
-.mission-check{
-  flex-shrink:0;
-  width:35px;
-  height:35px;
-  border:1px solid #555;
-  border-radius:50%;
-  background:#111;
-  color:#777;
-  cursor:pointer;
-  font-size:16px;
+.mission-check {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #555;
+  border-radius: 50%;
+  background: #111;
+  color: #777;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.mission.done{
-  border-color:#777;
+.mission.done {
+  border-color: #777;
+  background: #202020;
 }
 
-.mission.done .mission-check{
-  background:#f2f2f2;
-  color:#111;
-  border-color:#f2f2f2;
+.mission.done .mission-check {
+  background: #f2f2f2;
+  color: #111;
+  border-color: #f2f2f2;
 }
 
 /* COMPLETE */
 
-.complete{
-  display:none;
-  margin-top:18px;
-  padding:24px 15px;
-  border:1px solid #555;
-  background:#1b1b1b;
-  text-align:center;
+.complete {
+  display: none;
+  margin-top: 20px;
+  padding: 25px 15px;
+  border: 1px solid #555;
+  background: #1b1b1b;
+  text-align: center;
 }
 
-.complete.show{
-  display:block;
-  animation:completePop .7s cubic-bezier(.22,1,.36,1);
+.complete.show {
+  display: block;
+  animation: completePop .7s cubic-bezier(.22,1,.36,1);
 }
 
-@keyframes completePop{
-  0%{
-    opacity:0;
-    transform:scale(.9) translateY(12px);
+@keyframes completePop {
+  0% {
+    opacity: 0;
+    transform: scale(.9) translateY(12px);
   }
-  60%{
-    transform:scale(1.025);
+  60% {
+    transform: scale(1.025);
   }
-  100%{
-    opacity:1;
-    transform:scale(1);
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-.complete-icon{
-  font-size:38px;
+.complete-icon {
+  font-size: 40px;
 }
 
-.complete-title{
-  margin-top:10px;
-  font-size:17px;
-  font-weight:800;
+.complete-title {
+  margin-top: 10px;
+  font-size: 17px;
+  font-weight: 800;
 }
 
-.complete-desc{
-  margin-top:8px;
-  color:#aaa;
-  font-size:11px;
-  line-height:1.7;
+.complete-desc {
+  margin-top: 8px;
+  color: #aaa;
+  font-size: 11px;
+  line-height: 1.7;
 }
 
-.memory-button{
-  width:100%;
-  margin-top:18px;
-  padding:13px;
-  border:0;
-  background:#f2f2f2;
-  color:#111;
-  font-size:12px;
-  font-weight:800;
-  cursor:pointer;
+.memory-button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  border: 0;
+  background: #f2f2f2;
+  color: #111;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 /* MEMORY CARD */
 
-.memory-card{
-  display:none;
-  position:relative;
-  margin-top:18px;
-  padding:34px 18px;
-  border:1px solid #777;
+.memory-card {
+  display: none;
+  position: relative;
+  margin-top: 18px;
+  padding: 36px 18px;
+  border: 1px solid #777;
   background:
-    radial-gradient(circle at top,#292929 0,#171717 42%,#101010 100%);
-  text-align:center;
-  overflow:hidden;
+    radial-gradient(circle at top, #292929 0, #171717 42%, #101010 100%);
+  text-align: center;
+  overflow: hidden;
 }
 
-.memory-card.show{
-  display:block;
-  animation:cardIn .8s cubic-bezier(.22,1,.36,1);
+.memory-card.show {
+  display: block;
+  animation: cardIn .8s cubic-bezier(.22,1,.36,1);
 }
 
-@keyframes cardIn{
-  from{
-    opacity:0;
-    transform:translateY(18px) scale(.96);
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(.96);
   }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-.memory-card::before{
-  content:"";
-  position:absolute;
-  width:140px;
-  height:140px;
-  left:-70px;
-  top:-70px;
-  border:1px solid #444;
-  border-radius:50%;
+.memory-card::before {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  left: -70px;
+  top: -70px;
+  border: 1px solid #444;
+  border-radius: 50%;
 }
 
-.memory-card::after{
-  content:"";
-  position:absolute;
-  width:120px;
-  height:120px;
-  right:-60px;
-  bottom:-60px;
-  border:1px solid #333;
-  border-radius:50%;
+.memory-card::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  right: -60px;
+  bottom: -60px;
+  border: 1px solid #333;
+  border-radius: 50%;
 }
 
-.memory-small{
-  color:#999;
-  font-size:9px;
-  letter-spacing:3px;
+.memory-small {
+  position: relative;
+  z-index: 1;
+  color: #999;
+  font-size: 9px;
+  letter-spacing: 3px;
 }
 
-.memory-main{
-  margin:15px 0 4px;
-  font-size:23px;
-  font-weight:900;
-  letter-spacing:1px;
+.memory-main {
+  position: relative;
+  z-index: 1;
+  margin: 15px 0 4px;
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
-.memory-complete{
-  margin-top:15px;
-  font-size:12px;
-  font-weight:700;
+.memory-complete {
+  position: relative;
+  z-index: 1;
+  margin-top: 15px;
+  font-size: 12px;
+  font-weight: 700;
 }
 
-.memory-message{
-  margin-top:17px;
-  color:#ccc;
-  font-size:12px;
-  line-height:1.7;
+.memory-message {
+  position: relative;
+  z-index: 1;
+  margin-top: 17px;
+  color: #ccc;
+  font-size: 12px;
+  line-height: 1.7;
 }
 
-.memory-place{
-  margin-top:22px;
-  color:#888;
-  font-size:10px;
-  letter-spacing:1px;
+.memory-place {
+  position: relative;
+  z-index: 1;
+  margin-top: 22px;
+  color: #888;
+  font-size: 10px;
+  letter-spacing: 1px;
 }
 
 /* MENU */
 
-.section{
-  margin-top:28px;
+.section {
+  margin-top: 28px;
 }
 
-.section h2{
-  margin:0 0 2px;
-  padding-bottom:8px;
-  border-bottom:1px solid #444;
-  font-size:18px;
+.section h2 {
+  margin: 0 0 2px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #444;
+  font-size: 18px;
 }
 
-.note{
-  margin:8px 0 10px;
-  color:#888;
-  font-size:11px;
-  line-height:1.65;
+.note {
+  margin: 8px 0 10px;
+  color: #888;
+  font-size: 11px;
+  line-height: 1.65;
 }
 
-.item{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:15px;
-  padding:15px 2px;
-  border-bottom:1px solid #333;
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px 2px;
+  border-bottom: 1px solid #333;
 }
 
-.name{
-  font-size:14px;
-  font-weight:600;
-  line-height:1.5;
+.item > div:first-child {
+  min-width: 0;
 }
 
-.desc{
-  margin-top:4px;
-  color:#888;
-  font-size:11px;
-  line-height:1.55;
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
-.price{
-  flex-shrink:0;
-  font-size:14px;
-  font-weight:600;
-  white-space:nowrap;
+.desc {
+  margin-top: 4px;
+  color: #888;
+  font-size: 11px;
+  line-height: 1.55;
 }
 
-.footer{
-  margin-top:38px;
-  padding-top:18px;
-  border-top:1px solid #222;
-  color:#777;
-  text-align:center;
-  font-size:10px;
-  line-height:1.8;
+.price {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-@media(max-width:480px){
-  .wrap{padding:16px 20px 42px}
-  h1{font-size:25px}
+.footer {
+  margin-top: 38px;
+  padding-top: 18px;
+  border-top: 1px solid #222;
+  color: #777;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 16px 20px 42px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
 }
 </style>
 </head>
@@ -502,141 +543,149 @@ h1{
 <main class="wrap">
 
 <nav class="lang">
-<button class="active" data-lang="ko">KR</button>
-<button data-lang="en">ENG</button>
-<button data-lang="ja">JP</button>
-<button data-lang="zh">CN</button>
+  <button type="button" class="active" data-lang="ko">KR</button>
+  <button type="button" data-lang="en">ENG</button>
+  <button type="button" data-lang="ja">JP</button>
+  <button type="button" data-lang="zh">CN</button>
 </nav>
 
 <header class="hero">
-<div class="brand">MATCHANDEUL</div>
-<h1 data-t="title">맛찬들왕소금구이 수원인계점</h1>
-<div class="sub">PREMIUM KOREAN BBQ</div>
+  <div class="brand">MATCHANDEUL</div>
+  <h1 data-t="title">맛찬들왕소금구이 수원인계점</h1>
+  <div class="sub">PREMIUM KOREAN BBQ</div>
 </header>
 
 <div class="info" data-t="info">
-수원 인계동 · 숙성 돼지고기 전문
+  수원 인계동 · 숙성 돼지고기 전문
 </div>
 
 <!-- K-SSAM EXPERIENCE -->
 
 <div class="ssam-box" id="ssamBox">
 
-<button class="ssam-button" id="ssamButton">
-<span>
-<span class="ssam-title" data-t="ssamTitle">🥬 K-SSAM EXPERIENCE</span>
-<span class="ssam-subtitle" data-t="ssamSubtitle">한국식 쌈을 직접 만들어보세요</span>
-</span>
-<span class="ssam-arrow">⌄</span>
-</button>
+  <button type="button" class="ssam-button" id="ssamButton">
+    <span>
+      <span class="ssam-title" data-t="ssamTitle">
+        🥬 K-SSAM EXPERIENCE
+      </span>
 
-<div class="ssam-content">
-<div class="ssam-inner">
+      <span class="ssam-subtitle" data-t="ssamSubtitle">
+        한국식 쌈을 직접 만들어보세요
+      </span>
+    </span>
 
-<div class="ssam-guide">
-<div class="ssam-guide-name">🥬 CLASSIC SSAM</div>
-<div class="ssam-guide-steps" data-t="classicSteps">
-상추 → 삼겹살 → 쌈장 → 마늘
-</div>
+    <span class="ssam-arrow">⌄</span>
+  </button>
+
+  <div class="ssam-content">
+    <div class="ssam-inner">
+
+      <div class="ssam-guide">
+        <div class="ssam-guide-name">🥬 CLASSIC SSAM</div>
+        <div class="ssam-guide-steps" data-t="classicSteps">
+          상추 → 삼겹살 → 쌈장 → 마늘
+        </div>
+      </div>
+
+      <div class="ssam-guide">
+        <div class="ssam-guide-name">🌿 MINARI SSAM</div>
+        <div class="ssam-guide-steps" data-t="minariSteps">
+          상추 → 삼겹살 → 미나리 → 쌈장
+        </div>
+      </div>
+
+      <div class="ssam-guide">
+        <div class="ssam-guide-name">🌶️ KIMCHI SSAM</div>
+        <div class="ssam-guide-steps" data-t="kimchiSteps">
+          상추 → 삼겹살 → 구운 김치 → 쌈장
+        </div>
+      </div>
+
+      <button type="button" class="mission-start" id="missionStart" data-t="missionStart">
+        🎯 K-SSAM 미션 시작
+      </button>
+
+      <div class="mission-area" id="missionArea">
+
+        <div class="progress-text" id="progressText">
+          MISSION 0 / 3
+        </div>
+
+        <div class="progress">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="mission">
+          <div class="mission-text" data-t="mission1">
+            🥬 CLASSIC SSAM을 만들어 먹어보세요
+          </div>
+          <button type="button" class="mission-check">✓</button>
+        </div>
+
+        <div class="mission">
+          <div class="mission-text" data-t="mission2">
+            🌿 MINARI SSAM을 만들어 먹어보세요
+          </div>
+          <button type="button" class="mission-check">✓</button>
+        </div>
+
+        <div class="mission">
+          <div class="mission-text" data-t="mission3">
+            🌶️ KIMCHI SSAM을 만들어 먹어보세요
+          </div>
+          <button type="button" class="mission-check">✓</button>
+        </div>
+
+        <div class="complete" id="complete">
+
+          <div class="complete-icon">🎉</div>
+
+          <div class="complete-title" data-t="completeTitle">
+            K-SSAM MISSION COMPLETE!
+          </div>
+
+          <div class="complete-desc" data-t="completeDesc">
+            수원에서 한국식 K-BBQ 쌈 체험을 완료했습니다.
+          </div>
+
+          <button type="button" class="memory-button" id="memoryButton" data-t="memoryButton">
+            🏆 MY MEMORY CARD
+          </button>
+
+        </div>
+
+        <div class="memory-card" id="memoryCard">
+
+          <div class="memory-small">
+            MATCHANDEUL · SUWON · KOREA
+          </div>
+
+          <div class="memory-main">
+            🥬 K-BBQ MEMORY
+          </div>
+
+          <div class="memory-complete">
+            K-SSAM MISSION COMPLETE ✓
+          </div>
+
+          <div class="memory-message" data-t="memoryMessage">
+            수원에서 진짜 한국식 K-BBQ를 경험했습니다 🇰🇷
+          </div>
+
+          <div class="memory-place">
+            MATCHANDEUL SUWON INGYE
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
-<div class="ssam-guide">
-<div class="ssam-guide-name">🌿 MINARI SSAM</div>
-<div class="ssam-guide-steps" data-t="minariSteps">
-상추 → 삼겹살 → 미나리 → 쌈장
-</div>
-</div>
-
-<div class="ssam-guide">
-<div class="ssam-guide-name">🌶️ KIMCHI SSAM</div>
-<div class="ssam-guide-steps" data-t="kimchiSteps">
-상추 → 삼겹살 → 구운 김치 → 쌈장
-</div>
-</div>
-
-<button class="mission-start" id="missionStart" data-t="missionStart">
-🎯 K-SSAM 미션 시작
-</button>
-
-<div class="mission-area" id="missionArea">
-
-<div class="progress-text" id="progressText">
-MISSION 0 / 3
-</div>
-
-<div class="progress">
-<div class="progress-bar" id="progressBar"></div>
-</div>
-
-<div class="mission">
-<div class="mission-text" data-t="mission1">
-🥬 CLASSIC SSAM을 만들어 먹어보세요
-</div>
-<button class="mission-check">✓</button>
-</div>
-
-<div class="mission">
-<div class="mission-text" data-t="mission2">
-🌿 MINARI SSAM을 만들어 먹어보세요
-</div>
-<button class="mission-check">✓</button>
-</div>
-
-<div class="mission">
-<div class="mission-text" data-t="mission3">
-🌶️ KIMCHI SSAM을 만들어 먹어보세요
-</div>
-<button class="mission-check">✓</button>
-</div>
-
-<div class="complete" id="complete">
-
-<div class="complete-icon">🎉</div>
-
-<div class="complete-title" data-t="completeTitle">
-K-SSAM MISSION COMPLETE!
-</div>
-
-<div class="complete-desc" data-t="completeDesc">
-수원에서 한국식 K-BBQ 쌈 체험을 완료했습니다.
-</div>
-
-<button class="memory-button" id="memoryButton" data-t="memoryButton">
-🏆 MY MEMORY CARD
-</button>
-
-</div>
-
-<div class="memory-card" id="memoryCard">
-
-<div class="memory-small">
-MATCHANDEUL · SUWON · KOREA
-</div>
-
-<div class="memory-main">
-🥬 K-BBQ MEMORY
-</div>
-
-<div class="memory-complete">
-K-SSAM MISSION COMPLETE ✓
-</div>
-
-<div class="memory-message" data-t="memoryMessage">
-수원에서 진짜 한국식 K-BBQ를 경험했습니다 🇰🇷
-</div>
-
-<div class="memory-place">
-MATCHANDEUL SUWON INGYE
-</div>
-
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-<!-- PORK -->
+<!-- 숙성 돼지고기 -->
 
 <section class="section">
 
@@ -647,218 +696,218 @@ MATCHANDEUL SUWON INGYE
 </p>
 
 <div class="item">
-<div>
-<div class="name" data-t="porkBelly">336시간 숙성생삼겹살</div>
-<div class="desc">150g</div>
-</div>
-<div class="price">₩18,000</div>
-</div>
-
-<div class="item">
-<div>
-<div class="name" data-t="porkNeck">336시간 숙성생목살</div>
-<div class="desc" data-t="porkNeckDesc">150g · 3.5cm 두께</div>
-</div>
-<div class="price">₩18,000</div>
+  <div>
+    <div class="name" data-t="porkBelly">336시간 숙성생삼겹살</div>
+    <div class="desc">150g</div>
+  </div>
+  <div class="price">₩18,000</div>
 </div>
 
 <div class="item">
-<div>
-<div class="name" data-t="special">336시간 숙성 돼지특수부위</div>
-<div class="desc" data-t="specialDesc">가브리살 · 항정살 · 갈매기살</div>
-</div>
-<div class="price">₩19,000</div>
+  <div>
+    <div class="name" data-t="porkNeck">336시간 숙성생목살</div>
+    <div class="desc" data-t="porkNeckDesc">150g · 3.5cm 두께</div>
+  </div>
+  <div class="price">₩18,000</div>
 </div>
 
 <div class="item">
-<div>
-<div class="name" data-t="fiveLayer">336시간 숙성오겹살</div>
-<div class="desc">150g</div>
+  <div>
+    <div class="name" data-t="special">336시간 숙성 돼지특수부위</div>
+    <div class="desc" data-t="specialDesc">가브리살 · 항정살 · 갈매기살</div>
+  </div>
+  <div class="price">₩19,000</div>
 </div>
-<div class="price">₩20,000</div>
+
+<div class="item">
+  <div>
+    <div class="name" data-t="fiveLayer">336시간 숙성오겹살</div>
+    <div class="desc">150g</div>
+  </div>
+  <div class="price">₩20,000</div>
 </div>
 
 </section>
 
-<!-- BEEF -->
+<!-- 한우 -->
 
 <section class="section">
 
 <h2 data-t="beefTitle">한우</h2>
 
 <div class="item">
-<div>
-<div class="name" data-t="brisket">한우차돌박이</div>
-<div class="desc">120g</div>
-</div>
-<div class="price">₩24,000</div>
+  <div>
+    <div class="name" data-t="brisket">한우차돌박이</div>
+    <div class="desc">120g</div>
+  </div>
+  <div class="price">₩24,000</div>
 </div>
 
 <div class="item">
-<div>
-<div class="name" data-t="yukhoe">한우 1++ 육회</div>
-<div class="desc">200g</div>
-</div>
-<div class="price">₩30,000</div>
+  <div>
+    <div class="name" data-t="yukhoe">한우 1++ 육회</div>
+    <div class="desc">200g</div>
+  </div>
+  <div class="price">₩30,000</div>
 </div>
 
 </section>
 
-<!-- SIDES -->
+<!-- 식사 & 사이드 -->
 
 <section class="section">
 
 <h2 data-t="sideTitle">식사 & 사이드</h2>
 
 <div class="item">
-<div class="name" data-t="egg">계란찜</div>
-<div class="price">₩6,000</div>
+  <div class="name" data-t="egg">계란찜</div>
+  <div class="price">₩6,000</div>
 </div>
 
 <div class="item">
-<div class="name" data-t="cheese4">구워먹는 치즈 4조각</div>
-<div class="price">₩5,000</div>
+  <div class="name" data-t="cheese4">구워먹는 치즈 4조각</div>
+  <div class="price">₩5,000</div>
 </div>
 
 <div class="item">
-<div class="name" data-t="cheese8">구워먹는 치즈 8조각</div>
-<div class="price">₩9,000</div>
+  <div class="name" data-t="cheese8">구워먹는 치즈 8조각</div>
+  <div class="price">₩9,000</div>
 </div>
 
 <div class="item">
-<div class="name" data-t="minari100">청도한재 미나리 100g</div>
-<div class="price">₩5,000</div>
+  <div class="name" data-t="minari100">청도한재 미나리 100g</div>
+  <div class="price">₩5,000</div>
 </div>
 
 <div class="item">
-<div class="name" data-t="minari200">청도한재 미나리 200g</div>
-<div class="price">₩9,000</div>
+  <div class="name" data-t="minari200">청도한재 미나리 200g</div>
+  <div class="price">₩9,000</div>
 </div>
 
 <div class="item">
-<div class="name" data-t="doenjang">한우차돌 된장찌개</div>
-<div class="price">₩6,000</div>
+  <div class="name" data-t="doenjang">한우차돌 된장찌개</div>
+  <div class="price">₩6,000</div>
 </div>
 
 <div class="item">
-<div class="name" data-t="kimchi">숙성 돼지김치찌개</div>
-<div class="price">₩10,000</div>
+  <div class="name" data-t="kimchi">숙성 돼지김치찌개</div>
+  <div class="price">₩10,000</div>
 </div>
 
 <div class="item">
-<div class="name" data-t="hotpot">숙성 돼지김치전골</div>
-<div class="price">₩30,000</div>
+  <div class="name" data-t="hotpot">숙성 돼지김치전골</div>
+  <div class="price">₩30,000</div>
 </div>
 
 <div class="item">
-<div>
-<div class="name" data-t="naengmyeon">냉면</div>
-<div class="desc" data-t="naengmyeonDesc">물 / 비빔</div>
-</div>
-<div class="price">₩7,000</div>
+  <div>
+    <div class="name" data-t="naengmyeon">냉면</div>
+    <div class="desc" data-t="naengmyeonDesc">물 / 비빔</div>
+  </div>
+  <div class="price">₩7,000</div>
 </div>
 
 <div class="item">
-<div>
-<div class="name" data-t="rice">갓지은 돌솥밥</div>
-<div class="desc" data-t="riceDesc">주문 즉시 조리 · 약 20분</div>
-</div>
-<div class="price">₩5,000</div>
+  <div>
+    <div class="name" data-t="rice">갓지은 돌솥밥</div>
+    <div class="desc" data-t="riceDesc">주문 즉시 조리 · 약 20분</div>
+  </div>
+  <div class="price">₩5,000</div>
 </div>
 
 </section>
 
-<!-- SETS -->
+<!-- 추천 세트 -->
 
 <section class="section">
 
 <h2 data-t="setTitle">추천 세트</h2>
 
 <div class="item">
-<div>
-<div class="name" data-t="set2">2인 추천 세트</div>
-<div class="desc" data-t="set2Desc">
-숙성 생삼겹살/생목살 450g + 한우차돌 된장찌개
-</div>
-</div>
-<div class="price">₩58,000</div>
-</div>
-
-<div class="item">
-<div>
-<div class="name" data-t="set3">3인 추천 세트</div>
-<div class="desc" data-t="set3Desc">
-숙성 생삼겹살/생목살 750g + 한우차돌 된장찌개
-</div>
-</div>
-<div class="price">₩93,000</div>
+  <div>
+    <div class="name" data-t="set2">2인 추천 세트</div>
+    <div class="desc" data-t="set2Desc">
+      숙성 생삼겹살/생목살 450g + 한우차돌 된장찌개
+    </div>
+  </div>
+  <div class="price">₩58,000</div>
 </div>
 
 <div class="item">
-<div>
-<div class="name" data-t="set4">4인 추천 세트</div>
-<div class="desc" data-t="set4Desc">
-숙성 생삼겹살/생목살 1,050g + 한우차돌 된장찌개 & 숙성 돼지김치찌개
+  <div>
+    <div class="name" data-t="set3">3인 추천 세트</div>
+    <div class="desc" data-t="set3Desc">
+      숙성 생삼겹살/생목살 750g + 한우차돌 된장찌개
+    </div>
+  </div>
+  <div class="price">₩93,000</div>
 </div>
-</div>
-<div class="price">₩137,000</div>
+
+<div class="item">
+  <div>
+    <div class="name" data-t="set4">4인 추천 세트</div>
+    <div class="desc" data-t="set4Desc">
+      숙성 생삼겹살/생목살 1,050g + 한우차돌 된장찌개 & 숙성 돼지김치찌개
+    </div>
+  </div>
+  <div class="price">₩137,000</div>
 </div>
 
 </section>
 
-<!-- DRINKS -->
+<!-- 주류 & 음료 -->
 
 <section class="section">
 
 <h2 data-t="drinkTitle">주류 & 음료</h2>
 
 <div class="item">
-<div class="name" data-t="sojuBeer">소주 / 맥주</div>
-<div class="price">₩5,000</div>
+  <div class="name" data-t="sojuBeer">소주 / 맥주</div>
+  <div class="price">₩5,000</div>
 </div>
 
 <div class="item">
-<div>
-<div class="name" data-t="highball">하이볼</div>
-<div class="desc" data-t="highballDesc">짐빔 / 산토리</div>
-</div>
-<div class="price">₩8,000</div>
-</div>
-
-<div class="item">
-<div class="name" data-t="hallasan">한라산 21도 / 17도</div>
-<div class="price">₩6,000</div>
+  <div>
+    <div class="name" data-t="highball">하이볼</div>
+    <div class="desc" data-t="highballDesc">짐빔 / 산토리</div>
+  </div>
+  <div class="price">₩8,000</div>
 </div>
 
 <div class="item">
-<div class="name" data-t="hwayo">화요</div>
-<div class="price">₩30,000</div>
+  <div class="name" data-t="hallasan">한라산 21도 / 17도</div>
+  <div class="price">₩6,000</div>
 </div>
 
 <div class="item">
-<div class="name" data-t="ilpoom">일품진로</div>
-<div class="price">₩30,000</div>
+  <div class="name" data-t="hwayo">화요</div>
+  <div class="price">₩30,000</div>
 </div>
 
 <div class="item">
-<div class="name" data-t="bokbunja">복분자</div>
-<div class="price">₩15,000</div>
+  <div class="name" data-t="ilpoom">일품진로</div>
+  <div class="price">₩30,000</div>
 </div>
 
 <div class="item">
-<div>
-<div class="name" data-t="corkage">콜키지</div>
-<div class="desc" data-t="perBottle">병당</div>
-</div>
-<div class="price">₩10,000</div>
+  <div class="name" data-t="bokbunja">복분자</div>
+  <div class="price">₩15,000</div>
 </div>
 
 <div class="item">
-<div>
-<div class="name" data-t="softDrink">음료수</div>
-<div class="desc" data-t="softDrinkDesc">콜라 / 사이다 / 제로슈가</div>
+  <div>
+    <div class="name" data-t="corkage">콜키지</div>
+    <div class="desc" data-t="perBottle">병당</div>
+  </div>
+  <div class="price">₩10,000</div>
 </div>
-<div class="price">₩2,500</div>
+
+<div class="item">
+  <div>
+    <div class="name" data-t="softDrink">음료수</div>
+    <div class="desc" data-t="softDrinkDesc">콜라 / 사이다 / 제로슈가</div>
+  </div>
+  <div class="price">₩2,500</div>
 </div>
 
 </section>
@@ -871,408 +920,421 @@ MATCHANDEUL SUWON INGYE
 
 <script>
 
-const TEXT={
+const TEXT = {
 
-ko:{
-title:"맛찬들왕소금구이 수원인계점",
-info:"수원 인계동 · 숙성 돼지고기 전문",
+ko: {
+  title: "맛찬들왕소금구이 수원인계점",
+  info: "수원 인계동 · 숙성 돼지고기 전문",
 
-ssamTitle:"🥬 K-SSAM EXPERIENCE",
-ssamSubtitle:"한국식 쌈을 직접 만들어보세요",
-classicSteps:"상추 → 삼겹살 → 쌈장 → 마늘",
-minariSteps:"상추 → 삼겹살 → 미나리 → 쌈장",
-kimchiSteps:"상추 → 삼겹살 → 구운 김치 → 쌈장",
+  ssamTitle: "🥬 K-SSAM EXPERIENCE",
+  ssamSubtitle: "한국식 쌈을 직접 만들어보세요",
+  classicSteps: "상추 → 삼겹살 → 쌈장 → 마늘",
+  minariSteps: "상추 → 삼겹살 → 미나리 → 쌈장",
+  kimchiSteps: "상추 → 삼겹살 → 구운 김치 → 쌈장",
 
-missionStart:"🎯 K-SSAM 미션 시작",
-mission1:"🥬 CLASSIC SSAM을 만들어 먹어보세요",
-mission2:"🌿 MINARI SSAM을 만들어 먹어보세요",
-mission3:"🌶️ KIMCHI SSAM을 만들어 먹어보세요",
+  missionStart: "🎯 K-SSAM 미션 시작",
+  mission1: "🥬 CLASSIC SSAM을 만들어 먹어보세요",
+  mission2: "🌿 MINARI SSAM을 만들어 먹어보세요",
+  mission3: "🌶️ KIMCHI SSAM을 만들어 먹어보세요",
 
-completeTitle:"K-SSAM MISSION COMPLETE!",
-completeDesc:"수원에서 한국식 K-BBQ 쌈 체험을 완료했습니다.",
-memoryButton:"🏆 MY MEMORY CARD",
-memoryMessage:"수원에서 진짜 한국식 K-BBQ를 경험했습니다 🇰🇷",
+  completeTitle: "K-SSAM MISSION COMPLETE!",
+  completeDesc: "수원에서 한국식 K-BBQ 쌈 체험을 완료했습니다.",
+  memoryButton: "🏆 MY MEMORY CARD",
+  memoryMessage: "수원에서 진짜 한국식 K-BBQ를 경험했습니다 🇰🇷",
 
-meatTitle:"숙성 돼지고기",
-meatNote:"첫 주문 시 부위별 2인분 이상 주문 가능합니다. 추가 주문은 1인분씩 가능합니다. (특수부위 제외)",
-porkBelly:"336시간 숙성생삼겹살",
-porkNeck:"336시간 숙성생목살",
-porkNeckDesc:"150g · 3.5cm 두께",
-special:"336시간 숙성 돼지특수부위",
-specialDesc:"가브리살 · 항정살 · 갈매기살",
-fiveLayer:"336시간 숙성오겹살",
+  meatTitle: "숙성 돼지고기",
+  meatNote: "첫 주문 시 부위별 2인분 이상 주문 가능합니다. 추가 주문은 1인분씩 가능합니다. (특수부위 제외)",
 
-beefTitle:"한우",
-brisket:"한우차돌박이",
-yukhoe:"한우 1++ 육회",
+  porkBelly: "336시간 숙성생삼겹살",
+  porkNeck: "336시간 숙성생목살",
+  porkNeckDesc: "150g · 3.5cm 두께",
+  special: "336시간 숙성 돼지특수부위",
+  specialDesc: "가브리살 · 항정살 · 갈매기살",
+  fiveLayer: "336시간 숙성오겹살",
 
-sideTitle:"식사 & 사이드",
-egg:"계란찜",
-cheese4:"구워먹는 치즈 4조각",
-cheese8:"구워먹는 치즈 8조각",
-minari100:"청도한재 미나리 100g",
-minari200:"청도한재 미나리 200g",
-doenjang:"한우차돌 된장찌개",
-kimchi:"숙성 돼지김치찌개",
-hotpot:"숙성 돼지김치전골",
-naengmyeon:"냉면",
-naengmyeonDesc:"물 / 비빔",
-rice:"갓지은 돌솥밥",
-riceDesc:"주문 즉시 조리 · 약 20분",
+  beefTitle: "한우",
+  brisket: "한우차돌박이",
+  yukhoe: "한우 1++ 육회",
 
-setTitle:"추천 세트",
-set2:"2인 추천 세트",
-set2Desc:"숙성 생삼겹살/생목살 450g + 한우차돌 된장찌개",
-set3:"3인 추천 세트",
-set3Desc:"숙성 생삼겹살/생목살 750g + 한우차돌 된장찌개",
-set4:"4인 추천 세트",
-set4Desc:"숙성 생삼겹살/생목살 1,050g + 한우차돌 된장찌개 & 숙성 돼지김치찌개",
+  sideTitle: "식사 & 사이드",
+  egg: "계란찜",
+  cheese4: "구워먹는 치즈 4조각",
+  cheese8: "구워먹는 치즈 8조각",
+  minari100: "청도한재 미나리 100g",
+  minari200: "청도한재 미나리 200g",
+  doenjang: "한우차돌 된장찌개",
+  kimchi: "숙성 돼지김치찌개",
+  hotpot: "숙성 돼지김치전골",
+  naengmyeon: "냉면",
+  naengmyeonDesc: "물 / 비빔",
+  rice: "갓지은 돌솥밥",
+  riceDesc: "주문 즉시 조리 · 약 20분",
 
-drinkTitle:"주류 & 음료",
-sojuBeer:"소주 / 맥주",
-highball:"하이볼",
-highballDesc:"짐빔 / 산토리",
-hallasan:"한라산 21도 / 17도",
-hwayo:"화요",
-ilpoom:"일품진로",
-bokbunja:"복분자",
-corkage:"콜키지",
-perBottle:"병당",
-softDrink:"음료수",
-softDrinkDesc:"콜라 / 사이다 / 제로슈가",
+  setTitle: "추천 세트",
+  set2: "2인 추천 세트",
+  set2Desc: "숙성 생삼겹살/생목살 450g + 한우차돌 된장찌개",
+  set3: "3인 추천 세트",
+  set3Desc: "숙성 생삼겹살/생목살 750g + 한우차돌 된장찌개",
+  set4: "4인 추천 세트",
+  set4Desc: "숙성 생삼겹살/생목살 1,050g + 한우차돌 된장찌개 & 숙성 돼지김치찌개",
 
-footer:"메뉴 및 가격은 매장 운영에 따라 변경될 수 있습니다."
+  drinkTitle: "주류 & 음료",
+  sojuBeer: "소주 / 맥주",
+  highball: "하이볼",
+  highballDesc: "짐빔 / 산토리",
+  hallasan: "한라산 21도 / 17도",
+  hwayo: "화요",
+  ilpoom: "일품진로",
+  bokbunja: "복분자",
+  corkage: "콜키지",
+  perBottle: "병당",
+  softDrink: "음료수",
+  softDrinkDesc: "콜라 / 사이다 / 제로슈가",
+
+  footer: "메뉴 및 가격은 매장 운영에 따라 변경될 수 있습니다."
 },
 
-en:{
-title:"MATCHANDEUL SUWON INGYE",
-info:"Ingye-dong, Suwon · Premium Korean BBQ",
+en: {
+  title: "MATCHANDEUL SUWON INGYE",
+  info: "Ingye-dong, Suwon · Premium Korean BBQ",
 
-ssamTitle:"🥬 K-SSAM EXPERIENCE",
-ssamSubtitle:"Make your own Korean-style ssam",
-classicSteps:"Lettuce → Pork Belly → Ssamjang → Garlic",
-minariSteps:"Lettuce → Pork Belly → Minari → Ssamjang",
-kimchiSteps:"Lettuce → Pork Belly → Grilled Kimchi → Ssamjang",
+  ssamTitle: "🥬 K-SSAM EXPERIENCE",
+  ssamSubtitle: "Make your own Korean-style ssam",
+  classicSteps: "Lettuce → Pork Belly → Ssamjang → Garlic",
+  minariSteps: "Lettuce → Pork Belly → Minari → Ssamjang",
+  kimchiSteps: "Lettuce → Pork Belly → Grilled Kimchi → Ssamjang",
 
-missionStart:"🎯 START K-SSAM MISSION",
-mission1:"🥬 Make and enjoy a CLASSIC SSAM",
-mission2:"🌿 Make and enjoy a MINARI SSAM",
-mission3:"🌶️ Make and enjoy a KIMCHI SSAM",
+  missionStart: "🎯 START K-SSAM MISSION",
+  mission1: "🥬 Make and enjoy a CLASSIC SSAM",
+  mission2: "🌿 Make and enjoy a MINARI SSAM",
+  mission3: "🌶️ Make and enjoy a KIMCHI SSAM",
 
-completeTitle:"K-SSAM MISSION COMPLETE!",
-completeDesc:"You completed the Korean K-BBQ ssam experience in Suwon.",
-memoryButton:"🏆 MY MEMORY CARD",
-memoryMessage:"I experienced real Korean K-BBQ in Suwon 🇰🇷",
+  completeTitle: "K-SSAM MISSION COMPLETE!",
+  completeDesc: "You completed the Korean K-BBQ ssam experience in Suwon.",
+  memoryButton: "🏆 MY MEMORY CARD",
+  memoryMessage: "I experienced real Korean K-BBQ in Suwon 🇰🇷",
 
-meatTitle:"Aged Pork",
-meatNote:"First order: minimum 2 servings per cut. Additional orders are available by 1 serving. Special cuts excluded.",
-porkBelly:"336-Hour Aged Pork Belly",
-porkNeck:"336-Hour Aged Pork Neck",
-porkNeckDesc:"150g · 3.5cm Thick Cut",
-special:"336-Hour Aged Special Pork Cuts",
-specialDesc:"Gabrisal · Hangjeongsal · Galmaegisal (Special Pork Cuts)",
-fiveLayer:"336-Hour Aged Five-Layer Pork Belly",
+  meatTitle: "Aged Pork",
+  meatNote: "First order: minimum 2 servings per cut. Additional orders are available by 1 serving. Special cuts excluded.",
 
-beefTitle:"Korean Beef",
-brisket:"Korean Beef Brisket",
-yukhoe:"1++ Korean Beef Yukhoe (Korean-Style Seasoned Raw Beef)",
+  porkBelly: "336-Hour Aged Pork Belly",
+  porkNeck: "336-Hour Aged Pork Neck",
+  porkNeckDesc: "150g · 3.5cm Thick Cut",
+  special: "336-Hour Aged Special Pork Cuts",
+  specialDesc: "Gabrisal · Hangjeongsal · Galmaegisal (Special Pork Cuts)",
+  fiveLayer: "336-Hour Aged Five-Layer Pork Belly",
 
-sideTitle:"Meals & Sides",
-egg:"Steamed Egg",
-cheese4:"Grilling Cheese · 4 Pieces",
-cheese8:"Grilling Cheese · 8 Pieces",
-minari100:"Cheongdo Hanjae Minari (Korean Water Parsley) · 100g",
-minari200:"Cheongdo Hanjae Minari (Korean Water Parsley) · 200g",
-doenjang:"Doenjang Stew with Korean Beef Brisket",
-kimchi:"Aged Pork Kimchi Stew",
-hotpot:"Aged Pork Kimchi Hot Pot",
-naengmyeon:"Naengmyeon Cold Noodles",
-naengmyeonDesc:"Broth / Spicy Mixed",
-rice:"Fresh Stone-Pot Rice",
-riceDesc:"Cooked to order · Approx. 20 minutes",
+  beefTitle: "Korean Beef",
+  brisket: "Korean Beef Brisket",
+  yukhoe: "1++ Korean Beef Yukhoe (Korean-Style Seasoned Raw Beef)",
 
-setTitle:"Recommended Sets",
-set2:"Set for 2",
-set2Desc:"450g Aged Pork Belly/Pork Neck + Doenjang Stew with Korean Beef Brisket",
-set3:"Set for 3",
-set3Desc:"750g Aged Pork Belly/Pork Neck + Doenjang Stew with Korean Beef Brisket",
-set4:"Set for 4",
-set4Desc:"1,050g Aged Pork Belly/Pork Neck + Doenjang Stew with Korean Beef Brisket & Aged Pork Kimchi Stew",
+  sideTitle: "Meals & Sides",
+  egg: "Steamed Egg",
+  cheese4: "Grilling Cheese · 4 Pieces",
+  cheese8: "Grilling Cheese · 8 Pieces",
+  minari100: "Cheongdo Hanjae Minari (Korean Water Parsley) · 100g",
+  minari200: "Cheongdo Hanjae Minari (Korean Water Parsley) · 200g",
+  doenjang: "Doenjang Stew with Korean Beef Brisket",
+  kimchi: "Aged Pork Kimchi Stew",
+  hotpot: "Aged Pork Kimchi Hot Pot",
+  naengmyeon: "Naengmyeon Cold Noodles",
+  naengmyeonDesc: "Broth / Spicy Mixed",
+  rice: "Fresh Stone-Pot Rice",
+  riceDesc: "Cooked to order · Approx. 20 minutes",
 
-drinkTitle:"Alcohol & Beverages",
-sojuBeer:"Soju / Beer",
-highball:"Highball",
-highballDesc:"Jim Beam / Suntory",
-hallasan:"Hallasan Soju · 21% / 17% ABV",
-hwayo:"Hwayo",
-ilpoom:"Ilpoom Jinro",
-bokbunja:"Bokbunja (Korean Black Raspberry Wine)",
-corkage:"Corkage Fee",
-perBottle:"Per bottle",
-softDrink:"Soft Drinks",
-softDrinkDesc:"Cola / Lemon-Lime Soda / Zero-Sugar Cola",
+  setTitle: "Recommended Sets",
+  set2: "Set for 2",
+  set2Desc: "450g Aged Pork Belly/Pork Neck + Doenjang Stew with Korean Beef Brisket",
+  set3: "Set for 3",
+  set3Desc: "750g Aged Pork Belly/Pork Neck + Doenjang Stew with Korean Beef Brisket",
+  set4: "Set for 4",
+  set4Desc: "1,050g Aged Pork Belly/Pork Neck + Doenjang Stew with Korean Beef Brisket & Aged Pork Kimchi Stew",
 
-footer:"Menu items and prices may change depending on store operations."
+  drinkTitle: "Alcohol & Beverages",
+  sojuBeer: "Soju / Beer",
+  highball: "Highball",
+  highballDesc: "Jim Beam / Suntory",
+  hallasan: "Hallasan Soju · 21% / 17% ABV",
+  hwayo: "Hwayo",
+  ilpoom: "Ilpoom Jinro",
+  bokbunja: "Bokbunja (Korean Black Raspberry Wine)",
+  corkage: "Corkage Fee",
+  perBottle: "Per bottle",
+  softDrink: "Soft Drinks",
+  softDrinkDesc: "Cola / Lemon-Lime Soda / Zero-Sugar Cola",
+
+  footer: "Menu items and prices may change depending on store operations."
 },
 
-ja:{
-title:"MATCHANDEUL 水原・仁溪店",
-info:"水原・仁溪洞 · 熟成豚肉専門の韓国焼肉",
+ja: {
+  title: "MATCHANDEUL 水原・仁溪店",
+  info: "水原・仁溪洞 · 熟成豚肉専門の韓国焼肉",
 
-ssamTitle:"🥬 K-SSAM EXPERIENCE",
-ssamSubtitle:"韓国式サムを自分で作ってみましょう",
-classicSteps:"サンチュ → サムギョプサル → サムジャン → ニンニク",
-minariSteps:"サンチュ → サムギョプサル → ミナリ（セリ）→ サムジャン",
-kimchiSteps:"サンチュ → サムギョプサル → 焼きキムチ → サムジャン",
+  ssamTitle: "🥬 K-SSAM EXPERIENCE",
+  ssamSubtitle: "韓国式サムを自分で作ってみましょう",
+  classicSteps: "サンチュ → サムギョプサル → サムジャン → ニンニク",
+  minariSteps: "サンチュ → サムギョプサル → ミナリ（セリ）→ サムジャン",
+  kimchiSteps: "サンチュ → サムギョプサル → 焼きキムチ → サムジャン",
 
-missionStart:"🎯 K-SSAM ミッションスタート",
-mission1:"🥬 CLASSIC SSAMを作って食べてみましょう",
-mission2:"🌿 MINARI SSAMを作って食べてみましょう",
-mission3:"🌶️ KIMCHI SSAMを作って食べてみましょう",
+  missionStart: "🎯 K-SSAM ミッションスタート",
+  mission1: "🥬 CLASSIC SSAMを作って食べてみましょう",
+  mission2: "🌿 MINARI SSAMを作って食べてみましょう",
+  mission3: "🌶️ KIMCHI SSAMを作って食べてみましょう",
 
-completeTitle:"K-SSAM MISSION COMPLETE!",
-completeDesc:"水原で韓国式K-BBQサム体験を完了しました。",
-memoryButton:"🏆 MY MEMORY CARD",
-memoryMessage:"水原で本場の韓国K-BBQを体験しました 🇰🇷",
+  completeTitle: "K-SSAM MISSION COMPLETE!",
+  completeDesc: "水原で韓国式K-BBQサム体験を完了しました。",
+  memoryButton: "🏆 MY MEMORY CARD",
+  memoryMessage: "水原で本場の韓国K-BBQを体験しました 🇰🇷",
 
-meatTitle:"熟成豚肉",
-meatNote:"最初のご注文は各部位2人前以上から承ります。追加注文は1人前から可能です。（希少部位を除く）",
-porkBelly:"336時間熟成 生サムギョプサル",
-porkNeck:"336時間熟成 豚肩ロース",
-porkNeckDesc:"150g · 厚さ3.5cm",
-special:"336時間熟成 豚希少部位",
-specialDesc:"ガブリサル · ハンジョンサル · カルメギサル（豚希少部位）",
-fiveLayer:"336時間熟成 オギョプサル（皮付き豚バラ）",
+  meatTitle: "熟成豚肉",
+  meatNote: "最初のご注文は各部位2人前以上から承ります。追加注文は1人前から可能です。（希少部位を除く）",
 
-beefTitle:"韓牛",
-brisket:"韓牛チャドルバギ（薄切り牛バラ）",
-yukhoe:"韓牛1++ ユッケ（味付け生牛肉）",
+  porkBelly: "336時間熟成 生サムギョプサル",
+  porkNeck: "336時間熟成 豚肩ロース",
+  porkNeckDesc: "150g · 厚さ3.5cm",
+  special: "336時間熟成 豚希少部位",
+  specialDesc: "ガブリサル · ハンジョンサル · カルメギサル（豚希少部位）",
+  fiveLayer: "336時間熟成 オギョプサル（皮付き豚バラ）",
 
-sideTitle:"食事・サイドメニュー",
-egg:"韓国式茶碗蒸し",
-cheese4:"焼きチーズ · 4切れ",
-cheese8:"焼きチーズ · 8切れ",
-minari100:"清道韓在ミナリ（セリ）· 100g",
-minari200:"清道韓在ミナリ（セリ）· 200g",
-doenjang:"韓牛チャドルバギ入り味噌チゲ",
-kimchi:"熟成豚肉キムチチゲ",
-hotpot:"熟成豚肉キムチ鍋",
-naengmyeon:"冷麺",
-naengmyeonDesc:"水冷麺 / ビビン冷麺",
-rice:"炊きたて石釜ご飯",
-riceDesc:"ご注文後に炊き上げます · 約20分",
+  beefTitle: "韓牛",
+  brisket: "韓牛チャドルバギ（薄切り牛バラ）",
+  yukhoe: "韓牛1++ ユッケ（味付け生牛肉）",
 
-setTitle:"おすすめセット",
-set2:"2名様おすすめセット",
-set2Desc:"熟成サムギョプサル・豚肩ロース 450g + 韓牛チャドルバギ入り味噌チゲ",
-set3:"3名様おすすめセット",
-set3Desc:"熟成サムギョプサル・豚肩ロース 750g + 韓牛チャドルバギ入り味噌チゲ",
-set4:"4名様おすすめセット",
-set4Desc:"熟成サムギョプサル・豚肩ロース 1,050g + 韓牛チャドルバギ入り味噌チゲ & 熟成豚肉キムチチゲ",
+  sideTitle: "食事・サイドメニュー",
+  egg: "韓国式茶碗蒸し",
+  cheese4: "焼きチーズ · 4切れ",
+  cheese8: "焼きチーズ · 8切れ",
+  minari100: "清道韓在ミナリ（セリ）· 100g",
+  minari200: "清道韓在ミナリ（セリ）· 200g",
+  doenjang: "韓牛チャドルバギ入り味噌チゲ",
+  kimchi: "熟成豚肉キムチチゲ",
+  hotpot: "熟成豚肉キムチ鍋",
+  naengmyeon: "冷麺",
+  naengmyeonDesc: "水冷麺 / ビビン冷麺",
+  rice: "炊きたて石釜ご飯",
+  riceDesc: "ご注文後に炊き上げます · 約20分",
 
-drinkTitle:"お酒・ドリンク",
-sojuBeer:"焼酎 / ビール",
-highball:"ハイボール",
-highballDesc:"ジムビーム / サントリー",
-hallasan:"漢拏山焼酎 · 21度 / 17度",
-hwayo:"火尭（ファヨ）",
-ilpoom:"一品眞露",
-bokbunja:"覆盆子酒（韓国ブラックラズベリー酒）",
-corkage:"持ち込み料",
-perBottle:"1本につき",
-softDrink:"ソフトドリンク",
-softDrinkDesc:"コーラ / サイダー / ゼロシュガー",
+  setTitle: "おすすめセット",
+  set2: "2名様おすすめセット",
+  set2Desc: "熟成サムギョプサル・豚肩ロース 450g + 韓牛チャドルバギ入り味噌チゲ",
+  set3: "3名様おすすめセット",
+  set3Desc: "熟成サムギョプサル・豚肩ロース 750g + 韓牛チャドルバギ入り味噌チゲ",
+  set4: "4名様おすすめセット",
+  set4Desc: "熟成サムギョプサル・豚肩ロース 1,050g + 韓牛チャドルバギ入り味噌チゲ & 熟成豚肉キムチチゲ",
 
-footer:"メニューおよび価格は店舗運営状況により変更される場合があります。"
+  drinkTitle: "お酒・ドリンク",
+  sojuBeer: "焼酎 / ビール",
+  highball: "ハイボール",
+  highballDesc: "ジムビーム / サントリー",
+  hallasan: "漢拏山焼酎 · 21度 / 17度",
+  hwayo: "火尭（ファヨ）",
+  ilpoom: "一品眞露",
+  bokbunja: "覆盆子酒（韓国ブラックラズベリー酒）",
+  corkage: "持ち込み料",
+  perBottle: "1本につき",
+  softDrink: "ソフトドリンク",
+  softDrinkDesc: "コーラ / サイダー / ゼロシュガー",
+
+  footer: "メニューおよび価格は店舗運営状況により変更される場合があります。"
 },
 
-zh:{
-title:"MATCHANDEUL 水原仁溪店",
-info:"水原仁溪洞 · 熟成猪肉韩国烤肉",
+zh: {
+  title: "MATCHANDEUL 水原仁溪店",
+  info: "水原仁溪洞 · 熟成猪肉韩国烤肉",
 
-ssamTitle:"🥬 K-SSAM EXPERIENCE",
-ssamSubtitle:"亲手体验韩式包肉吃法",
-classicSteps:"生菜 → 五花肉 → 韩式包饭酱 → 大蒜",
-minariSteps:"生菜 → 五花肉 → 水芹 → 韩式包饭酱",
-kimchiSteps:"生菜 → 五花肉 → 烤泡菜 → 韩式包饭酱",
+  ssamTitle: "🥬 K-SSAM EXPERIENCE",
+  ssamSubtitle: "亲手体验韩式包肉吃法",
+  classicSteps: "生菜 → 五花肉 → 韩式包饭酱 → 大蒜",
+  minariSteps: "生菜 → 五花肉 → 水芹 → 韩式包饭酱",
+  kimchiSteps: "生菜 → 五花肉 → 烤泡菜 → 韩式包饭酱",
 
-missionStart:"🎯 开始 K-SSAM 挑战",
-mission1:"🥬 制作并品尝 CLASSIC SSAM",
-mission2:"🌿 制作并品尝 MINARI SSAM",
-mission3:"🌶️ 制作并品尝 KIMCHI SSAM",
+  missionStart: "🎯 开始 K-SSAM 挑战",
+  mission1: "🥬 制作并品尝 CLASSIC SSAM",
+  mission2: "🌿 制作并品尝 MINARI SSAM",
+  mission3: "🌶️ 制作并品尝 KIMCHI SSAM",
 
-completeTitle:"K-SSAM MISSION COMPLETE!",
-completeDesc:"你已完成水原韩式K-BBQ包肉体验。",
-memoryButton:"🏆 MY MEMORY CARD",
-memoryMessage:"我在水原体验了正宗韩式K-BBQ 🇰🇷",
+  completeTitle: "K-SSAM MISSION COMPLETE!",
+  completeDesc: "你已完成水原韩式K-BBQ包肉体验。",
+  memoryButton: "🏆 MY MEMORY CARD",
+  memoryMessage: "我在水原体验了正宗韩式K-BBQ 🇰🇷",
 
-meatTitle:"熟成猪肉",
-meatNote:"首次点餐每个部位至少点2人份。追加点餐可从1人份起点。（特色部位除外）",
-porkBelly:"336小时熟成鲜五花肉",
-porkNeck:"336小时熟成猪颈肉",
-porkNeckDesc:"150g · 厚切3.5cm",
-special:"336小时熟成猪肉特色部位",
-specialDesc:"Gabrisal · Hangjeongsal · Galmaegisal（猪肉特色部位）",
-fiveLayer:"336小时熟成带皮五花肉",
+  meatTitle: "熟成猪肉",
+  meatNote: "首次点餐每个部位至少点2人份。追加点餐可从1人份起点。（特色部位除外）",
 
-beefTitle:"韩牛",
-brisket:"韩牛薄切胸腹肉",
-yukhoe:"韩牛1++ 韩式生拌牛肉（Yukhoe）",
+  porkBelly: "336小时熟成鲜五花肉",
+  porkNeck: "336小时熟成猪颈肉",
+  porkNeckDesc: "150g · 厚切3.5cm",
+  special: "336小时熟成猪肉特色部位",
+  specialDesc: "Gabrisal · Hangjeongsal · Galmaegisal（猪肉特色部位）",
+  fiveLayer: "336小时熟成带皮五花肉",
 
-sideTitle:"主食 & 小菜",
-egg:"韩式蒸蛋",
-cheese4:"烤芝士 · 4块",
-cheese8:"烤芝士 · 8块",
-minari100:"清道韩在水芹 · 100g",
-minari200:"清道韩在水芹 · 200g",
-doenjang:"韩牛胸腹肉大酱汤",
-kimchi:"熟成猪肉泡菜汤",
-hotpot:"熟成猪肉泡菜火锅",
-naengmyeon:"韩式冷面",
-naengmyeonDesc:"汤冷面 / 辣拌冷面",
-rice:"现做石锅饭",
-riceDesc:"下单后现做 · 约20分钟",
+  beefTitle: "韩牛",
+  brisket: "韩牛薄切胸腹肉",
+  yukhoe: "韩牛1++ 韩式生拌牛肉（Yukhoe）",
 
-setTitle:"推荐套餐",
-set2:"2人推荐套餐",
-set2Desc:"熟成五花肉/猪颈肉 450g + 韩牛胸腹肉大酱汤",
-set3:"3人推荐套餐",
-set3Desc:"熟成五花肉/猪颈肉 750g + 韩牛胸腹肉大酱汤",
-set4:"4人推荐套餐",
-set4Desc:"熟成五花肉/猪颈肉 1,050g + 韩牛胸腹肉大酱汤 & 熟成猪肉泡菜汤",
+  sideTitle: "主食 & 小菜",
+  egg: "韩式蒸蛋",
+  cheese4: "烤芝士 · 4块",
+  cheese8: "烤芝士 · 8块",
+  minari100: "清道韩在水芹 · 100g",
+  minari200: "清道韩在水芹 · 200g",
+  doenjang: "韩牛胸腹肉大酱汤",
+  kimchi: "熟成猪肉泡菜汤",
+  hotpot: "熟成猪肉泡菜火锅",
+  naengmyeon: "韩式冷面",
+  naengmyeonDesc: "汤冷面 / 辣拌冷面",
+  rice: "现做石锅饭",
+  riceDesc: "下单后现做 · 约20分钟",
 
-drinkTitle:"酒水 & 饮料",
-sojuBeer:"烧酒 / 啤酒",
-highball:"嗨棒（Highball）",
-highballDesc:"Jim Beam / Suntory",
-hallasan:"汉拿山烧酒 · 21度 / 17度",
-hwayo:"火尧（Hwayo）",
-ilpoom:"一品真露",
-bokbunja:"覆盆子酒（韩国黑树莓酒）",
-corkage:"自带酒水服务费",
-perBottle:"每瓶",
-softDrink:"软饮",
-softDrinkDesc:"可乐 / 柠檬青柠汽水 / 无糖可乐",
+  setTitle: "推荐套餐",
+  set2: "2人推荐套餐",
+  set2Desc: "熟成五花肉/猪颈肉 450g + 韩牛胸腹肉大酱汤",
+  set3: "3人推荐套餐",
+  set3Desc: "熟成五花肉/猪颈肉 750g + 韩牛胸腹肉大酱汤",
+  set4: "4人推荐套餐",
+  set4Desc: "熟成五花肉/猪颈肉 1,050g + 韩牛胸腹肉大酱汤 & 熟成猪肉泡菜汤",
 
-footer:"菜单及价格可能根据门店运营情况有所调整。"
+  drinkTitle: "酒水 & 饮料",
+  sojuBeer: "烧酒 / 啤酒",
+  highball: "嗨棒（Highball）",
+  highballDesc: "Jim Beam / Suntory",
+  hallasan: "汉拿山烧酒 · 21度 / 17度",
+  hwayo: "火尧（Hwayo）",
+  ilpoom: "一品真露",
+  bokbunja: "覆盆子酒（韩国黑树莓酒）",
+  corkage: "自带酒水服务费",
+  perBottle: "每瓶",
+  softDrink: "软饮",
+  softDrinkDesc: "可乐 / 柠檬青柠汽水 / 无糖可乐",
+
+  footer: "菜单及价格可能根据门店运营情况有所调整。"
 }
 
 };
 
-let currentLanguage="ko";
-let changing=false;
+let currentLanguage = "ko";
+let changing = false;
 
-function applyLanguage(lang){
+function applyLanguage(lang) {
 
-  const dictionary=TEXT[lang];
-  if(!dictionary)return;
+  const dictionary = TEXT[lang];
 
-  document.querySelectorAll("[data-t]").forEach(function(el){
+  if (!dictionary) return;
 
-    const key=el.getAttribute("data-t");
+  document.querySelectorAll("[data-t]").forEach(function(element) {
 
-    if(dictionary[key]!==undefined){
-      el.textContent=dictionary[key];
+    const key = element.getAttribute("data-t");
+
+    if (dictionary[key] !== undefined) {
+      element.textContent = dictionary[key];
     }
 
   });
 
-  document.querySelectorAll(".lang button").forEach(function(button){
+  document.querySelectorAll(".lang button").forEach(function(button) {
 
     button.classList.toggle(
       "active",
-      button.getAttribute("data-lang")===lang
+      button.getAttribute("data-lang") === lang
     );
 
   });
 
-  document.documentElement.lang=lang;
-  currentLanguage=lang;
+  document.documentElement.lang = lang;
+  currentLanguage = lang;
 }
 
-function changeLanguage(lang){
+function changeLanguage(lang) {
 
-  if(changing||!TEXT[lang]||lang===currentLanguage)return;
+  if (changing || !TEXT[lang] || lang === currentLanguage) {
+    return;
+  }
 
-  changing=true;
+  changing = true;
 
   document.body.classList.add("language-out");
 
-  setTimeout(function(){
+  setTimeout(function() {
 
     applyLanguage(lang);
 
     document.body.classList.remove("language-out");
 
-    setTimeout(function(){
-      changing=false;
-    },350);
+    setTimeout(function() {
+      changing = false;
+    }, 350);
 
-  },180);
+  }, 180);
 }
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded", function() {
 
   /* LANGUAGE */
 
-  document.querySelectorAll(".lang button").forEach(function(button){
+  document.querySelectorAll(".lang button").forEach(function(button) {
 
-    button.addEventListener("click",function(){
-      changeLanguage(this.getAttribute("data-lang"));
+    button.addEventListener("click", function() {
+
+      changeLanguage(
+        this.getAttribute("data-lang")
+      );
+
     });
 
   });
 
+  /* K-SSAM OPEN */
 
-  /* SSAM OPEN */
+  const ssamBox = document.getElementById("ssamBox");
+  const ssamButton = document.getElementById("ssamButton");
 
-  const ssamBox=document.getElementById("ssamBox");
-  const ssamButton=document.getElementById("ssamButton");
+  ssamButton.addEventListener("click", function() {
 
-  ssamButton.addEventListener("click",function(){
     ssamBox.classList.toggle("open");
-  });
 
+  });
 
   /* MISSION */
 
-  const missionStart=document.getElementById("missionStart");
-  const missionArea=document.getElementById("missionArea");
-  const missions=document.querySelectorAll(".mission");
-  const progressText=document.getElementById("progressText");
-  const progressBar=document.getElementById("progressBar");
-  const complete=document.getElementById("complete");
+  const missionStart = document.getElementById("missionStart");
+  const missionArea = document.getElementById("missionArea");
+  const missions = document.querySelectorAll(".mission");
+  const progressText = document.getElementById("progressText");
+  const progressBar = document.getElementById("progressBar");
+  const complete = document.getElementById("complete");
 
-  missionStart.addEventListener("click",function(){
+  missionStart.addEventListener("click", function() {
 
     missionArea.classList.add("show");
-    missionStart.style.display="none";
+    missionStart.style.display = "none";
 
   });
 
-  function updateMission(){
+  function updateMission() {
 
-    const completed=
+    const completed =
       document.querySelectorAll(".mission.done").length;
 
-    progressText.textContent=
-      "MISSION "+completed+" / 3";
+    progressText.textContent =
+      "MISSION " + completed + " / 3";
 
-    progressBar.style.width=
-      ((completed/3)*100)+"%";
+    progressBar.style.width =
+      ((completed / 3) * 100) + "%";
 
-    if(completed===3){
+    if (completed === 3) {
 
       complete.classList.add("show");
 
-      setTimeout(function(){
-        complete.scrollIntoView({
-          behavior:"smooth",
-          block:"center"
-        });
-      },250);
+      setTimeout(function() {
 
-    }else{
+        complete.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+      }, 250);
+
+    } else {
 
       complete.classList.remove("show");
 
@@ -1280,53 +1342,49 @@ document.addEventListener("DOMContentLoaded",function(){
 
   }
 
-  missions.forEach(function(mission){
+  missions.forEach(function(mission) {
 
-    const button=
+    const button =
       mission.querySelector(".mission-check");
 
-    button.addEventListener("click",function(){
+    button.addEventListener("click", function() {
 
       mission.classList.toggle("done");
-
       updateMission();
 
     });
 
   });
 
-
   /* MEMORY CARD */
 
-  const memoryButton=
+  const memoryButton =
     document.getElementById("memoryButton");
 
-  const memoryCard=
+  const memoryCard =
     document.getElementById("memoryCard");
 
-  memoryButton.addEventListener("click",function(){
+  memoryButton.addEventListener("click", function() {
 
     memoryCard.classList.add("show");
+    memoryButton.style.display = "none";
 
-    memoryButton.style.display="none";
-
-    setTimeout(function(){
+    setTimeout(function() {
 
       memoryCard.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
+        behavior: "smooth",
+        block: "center"
       });
 
-    },150);
+    }, 150);
 
   });
 
-
   /* FIRST LOAD */
 
-  requestAnimationFrame(function(){
+  requestAnimationFrame(function() {
 
-    requestAnimationFrame(function(){
+    requestAnimationFrame(function() {
 
       document.body.classList.add("ready");
 
@@ -1336,16 +1394,15 @@ document.addEventListener("DOMContentLoaded",function(){
 
 });
 
-
 /* SAFETY */
 
-setTimeout(function(){
+setTimeout(function() {
 
   document.body.classList.add("ready");
 
-},1200);
+}, 1200);
 
 </script>
 
 </body>
-</html>
+  </html>
