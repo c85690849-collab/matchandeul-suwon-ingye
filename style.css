@@ -25,15 +25,33 @@ body{
   margin:auto;
   padding:18px 22px 48px;
 
-  animation:pageEnter .8s cubic-bezier(.22,1,.36,1) both;
+  /*
+    첫 등장 애니메이션
+    forwards / both 사용하지 않음
+    종료 후 opacity를 붙잡지 않게 함
+  */
+
+  animation-name:pageEnter;
+  animation-duration:.8s;
+  animation-timing-function:cubic-bezier(.22,1,.36,1);
+  animation-fill-mode:none;
+
+  /*
+    언어 변경용 transition
+  */
 
   transition:
     opacity .32s ease,
     transform .32s cubic-bezier(.22,1,.36,1);
+
+  opacity:1;
+  transform:translateY(0);
 }
 
 
-/* 언어 변경 시 화면 사라짐 */
+/* =========================
+   언어 변경
+========================= */
 
 .wrap.language-changing{
   opacity:0;
@@ -59,8 +77,11 @@ body{
   position:relative;
   border:0;
   background:transparent;
+
   padding:7px 11px;
+
   cursor:pointer;
+
   color:#777;
   font-size:12px;
 
@@ -72,7 +93,9 @@ body{
 
 .lang button::after{
   content:"";
+
   position:absolute;
+
   left:50%;
   bottom:0;
 
@@ -102,12 +125,14 @@ body{
 
 
 /* =========================
-   상단 HERO
+   HERO
 ========================= */
 
 .hero{
   text-align:center;
+
   padding:8px 10px 30px;
+
   border-bottom:1px solid #444;
 
   animation:
@@ -117,8 +142,11 @@ body{
 
 .brand{
   font-size:12px;
+
   letter-spacing:5px;
+
   font-weight:700;
+
   color:#aaa;
 
   animation:fadeDown .8s .2s both;
@@ -126,8 +154,11 @@ body{
 
 h1{
   font-size:27px;
+
   margin:10px 0 6px;
+
   font-weight:700;
+
   letter-spacing:-.5px;
 
   animation:
@@ -137,7 +168,9 @@ h1{
 
 .sub{
   font-size:10px;
+
   letter-spacing:3px;
+
   color:#777;
 
   animation:fadeUp .8s .4s both;
@@ -150,9 +183,11 @@ h1{
 
 .info{
   background:#191919;
+
   color:#aaa;
 
   padding:12px;
+
   text-align:center;
 
   margin:18px 0 25px;
@@ -263,7 +298,7 @@ h1{
 }
 
 
-/* 메뉴 하나씩 등장 */
+/* 메뉴 순차 등장 */
 
 .section .item:nth-of-type(1){
   animation-delay:.45s;
@@ -306,7 +341,9 @@ h1{
 }
 
 
-/* 메뉴 터치 */
+/* =========================
+   메뉴 터치 효과
+========================= */
 
 .item:active{
   transform:scale(.985);
@@ -319,7 +356,9 @@ h1{
 }
 
 
-/* 메뉴 이름 */
+/* =========================
+   메뉴 이름
+========================= */
 
 .name{
   font-weight:600;
@@ -330,7 +369,9 @@ h1{
 }
 
 
-/* 메뉴 설명 */
+/* =========================
+   메뉴 설명
+========================= */
 
 .desc{
   font-size:11px;
@@ -343,7 +384,9 @@ h1{
 }
 
 
-/* 가격 */
+/* =========================
+   가격
+========================= */
 
 .price{
   white-space:nowrap;
@@ -406,31 +449,33 @@ h1{
 }
 
 
-/* =========================
-   기타
-========================= */
-
 .hidden{
   display:none;
 }
 
 
 /* =========================
-   애니메이션
+   첫 페이지 등장
 ========================= */
 
 @keyframes pageEnter{
 
   from{
     opacity:0;
+    transform:translateY(6px);
   }
 
   to{
     opacity:1;
+    transform:translateY(0);
   }
 
 }
 
+
+/* =========================
+   HERO 등장
+========================= */
 
 @keyframes heroEnter{
 
@@ -446,6 +491,10 @@ h1{
 
 }
 
+
+/* =========================
+   제목 등장
+========================= */
 
 @keyframes titleEnter{
 
@@ -464,6 +513,10 @@ h1{
 }
 
 
+/* =========================
+   SECTION 등장
+========================= */
+
 @keyframes sectionEnter{
 
   from{
@@ -478,6 +531,10 @@ h1{
 
 }
 
+
+/* =========================
+   메뉴 등장
+========================= */
 
 @keyframes itemEnter{
 
@@ -494,6 +551,10 @@ h1{
 }
 
 
+/* =========================
+   아래 → 위
+========================= */
+
 @keyframes fadeUp{
 
   from{
@@ -508,6 +569,10 @@ h1{
 
 }
 
+
+/* =========================
+   위 → 아래
+========================= */
 
 @keyframes fadeDown{
 
